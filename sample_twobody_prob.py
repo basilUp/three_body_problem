@@ -103,12 +103,12 @@ def plot_traj(trajectory):
     plt.show()
 
 # ANIMATE TRAJECTORY
-# fig, ax = plt.subplots()
-# ani = FuncAnimation(fig, animate_traj, frames=len(trajectory), interval=1, repeat=False)
-# plt.show()
+fig, ax = plt.subplots()
+ani = FuncAnimation(fig, animate_traj, frames=range(0, len(trajectory), 100), interval=1, repeat=False)
+plt.show()
 
 # PLOT TRAJECTORY
-plot_traj(trajectory)
+# plot_traj(trajectory)
 
 # PRINT TRAJECTORY and PLOT
 # for i, (r, v) in enumerate(trajectory):
