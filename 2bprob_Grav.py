@@ -70,7 +70,7 @@ def animate_3d_traj(i):
     ax.set_xlabel('X Position (km)')
     ax.set_ylabel('Y Position (km)')
     ax.set_zlabel('Z Position (km)')
-    ax.set_title(f'Satellite Trajectory')
+    ax.set_title(f'Satellite Trajectory under Gravity')
     ax.axes.set_xlim(-60000, 60000)
     ax.axes.set_ylim(-50000, 50000)
     ax.axes.set_zlim(-40000, 40000)
@@ -81,11 +81,11 @@ fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 def init():
     return ax
-ani = FuncAnimation(fig, animate_3d_traj, frames=range(0, len(trajectory), 500), init_func=init, interval=1, repeat=False)
+ani = FuncAnimation(fig, animate_3d_traj, frames=range(0, len(trajectory), 250), init_func=init, interval=1, repeat=False)
 
 # Save the animation as a GIF
-# filename = 'satellite_trajectory.gif'
-# ani.save(filename, writer='pillow')
+filename = 'satellite_trajectory_gravity.gif'
+ani.save(filename, writer='pillow')
 
 plt.show()
 
