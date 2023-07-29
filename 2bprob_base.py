@@ -107,6 +107,7 @@ def plot_traj(trajectory):
 
 # Function to create 3D plot
 def plot_3d_traj():
+    plt.cla()
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
 
@@ -138,9 +139,7 @@ def plot_3d_traj():
 
 # Function to create 3D animation
 def animate_3d_traj(i):
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
-
+    ax.clear()
     # Plot the Earth as a sphere
     earth_radius = 6371  # Earth's radius in km
     u = np.linspace(0, 2 * np.pi, 100)
@@ -159,7 +158,7 @@ def animate_3d_traj(i):
     ax.set_xlabel('X Position (km)')
     ax.set_ylabel('Y Position (km)')
     ax.set_zlabel('Z Position (km)')
-    ax.set_title(f'Satellite Trajectory (Step {i})')
+    ax.set_title(f'Satellite Trajectory')
     ax.axes.set_xlim(-60000, 60000)
     ax.axes.set_ylim(-50000, 50000)
     ax.axes.set_zlim(-40000, 40000)
@@ -177,9 +176,11 @@ def animate_3d_traj(i):
 # plot_3d_traj()
 
 # Animate 3D trajectory
-# fig = plt.figure()
-fig, ax = plt.subplots()
-ani = FuncAnimation(fig, animate_3d_traj, frames=range(0, len(trajectory), 100), interval=1, repeat=False)
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+def init():
+    return ax
+ani = FuncAnimation(fig, animate_3d_traj, frames=range(0, len(trajectory), 500), init_func=init, interval=1, repeat=False)
 plt.show()
 
 # PRINT TRAJECTORY and PLOT
